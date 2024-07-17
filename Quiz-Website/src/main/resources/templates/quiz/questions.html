@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Quiz Question</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            padding: 20px;
+            background-color: #f8f9fa;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #007bff;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .card {
+            padding: 20px;
+            margin-bottom: 20px;
+            border: none;
+        }
+        .btn {
+            width: 100%;
+            margin-top: 10px;
+            border-radius: .25rem;
+        }
+        .btn-primary {
+            background-color: #007bff;
+            border: 1px solid #007bff;
+        }
+        .btn-primary:hover {
+            background-color: #0056b3;
+            border-color: #0056b3;
+        }
+        .skip-btn {
+            background-color: #6c757d;
+            border: 1px solid #6c757d;
+        }
+        .skip-btn:hover {
+            background-color: #5a6268;
+            border-color: #545b62;
+        }
+        .nav-btn {
+            margin-top: 5px;
+        }
+        .question {
+            margin-bottom: 20px;
+        }
+        .nav-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+        }
+        .form-check-label {
+            width: 100%;
+            padding: 10px;
+            background-color: #f0f0f0;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .form-check-input {
+            display: none;
+        }
+        .form-check-input:checked + .form-check-label {
+            background-color: #007bff;
+            color: white;
+            border-color: #007bff;
+        }
+        .nav-btn {
+            flex: 1;
+            margin: 0 5px;
+            padding: 10px;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            text-align: center;
+            transition: background-color 0.3s;
+        }
+        .nav-btn:hover {
+            background-color: #0056b3;
+        }
+        .btn-warning, .btn-success {
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Question <span th:text="${questionNumber}"></span></h1>
+        
+        <div class="card">
+            <div class="question">
+                <form id="quizForm" th:action="@{/quiz/questions}" method="post">
+                    <div class="form-group">
+                        <label th:text="${question.questionText}"></label>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="answer" th:value="${question.optionA}" id="optionA"
+                                   th:checked="${userAnswer} == ${question.optionA}">
+                            <label class="form-check-label" for="optionA" th:text="${question.optionA}" title="Option A"></label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="answer" th:value="${question.optionB}" id="optionB"
+                                   th:checked="${userAnswer} == ${question.optionB}">
+                            <label class="form-check-label" for="optionB" th:text="${question.optionB}" title="Option B"></label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="answer" th:value="${question.optionC}" id="optionC"
+                                   th:checked="${userAnswer} == ${question.optionC}">
+                            <label class="form-check-label" for="optionC" th:text="${question.optionC}" title="Option C"></label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="answer" th:value="${question.optionD}" id="optionD"
+                                   th:checked="${userAnswer} == ${question.optionD}">
+                            <label class="form-check-label" for="optionD" th:text="${question.optionD}" title="Option D"></label>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary" title="Submit your answer">Submit Answer</button>
+                    <button type="submit" name="skip" value="true" class="btn skip-btn" title="Skip this question">Skip Question</button>
+                </form>
+            </div>
+        </div>
+        <div>
+            <h3>Skipped Questions</h3>
+            <div class="nav-buttons" th:each="index : ${skippedQuestions}">
+                <a th:href="@{/quiz/questions(index=${index})}" class="nav-btn btn btn-warning btn-sm" th:text="${index + 1}" title="Go to skipped question"></a>
+            </div>
+            <h3 class="mt-4">Attempted Questions</h3>
+            <div class="nav-buttons" th:each="index : ${attemptedQuestions}">
+                <a th:href="@{/quiz/questions(index=${index})}" class="nav-btn btn btn-success btn-sm" th:text="${index + 1}" title="Go to attempted question"></a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Add Question</title>
+    <!-- Include Bootstrap CSS from CDN -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Custom CSS for additional styling */
+        body {
+            padding: 20px;
+        }
+        h1 {
+            color: #007bff; /* Blue color */
+            text-align: center; /* Center align heading */
+            margin-top: 50px; /* Add space above heading */
+            margin-bottom: 30px; /* Add space below heading */
+        }
+        .form-group {
+            margin-bottom: 20px; /* Add space below form elements */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>KnowledgeQuest</h1>
+        <h3>Add Question</h3>
+        <form th:action="@{/admin/add-question}" th:object="${question}" method="post">
+            <div class="form-group">
+                <label for="subject">Subject:</label>
+                <input type="text" class="form-control" id="subject" th:field="*{subject}" required />
+            </div>
+            <div class="form-group">
+                <label for="question">Question:</label>
+                <input type="text" class="form-control" id="question" th:field="*{questionText}" required />
+            </div>
+            <div class="form-group">
+                <label for="optionA">Option A:</label>
+                <input type="text" class="form-control" id="optionA" th:field="*{optionA}" required />
+            </div>
+            <div class="form-group">
+                <label for="optionB">Option B:</label>
+                <input type="text" class="form-control" id="optionB" th:field="*{optionB}" required />
+            </div>
+            <div class="form-group">
+                <label for="optionC">Option C:</label>
+                <input type="text" class="form-control" id="optionC" th:field="*{optionC}" required />
+            </div>
+            <div class="form-group">
+                <label for="optionD">Option D:</label>
+                <input type="text" class="form-control" id="optionD" th:field="*{optionD}" required />
+            </div>
+            <div class="form-group">
+                <label for="correctAnswer">Correct Answer:</label>
+                <input type="text" class="form-control" id="correctAnswer" th:field="*{correctAnswer}" required />
+            </div>
+            <button type="submit" class="btn btn-primary">Add Question</button>
+        </form>
+    </div>
+</body>
+</html>

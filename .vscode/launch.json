@@ -1,0 +1,24 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-QuizWebsiteApplication<Quiz-Website>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.Quiz.Website.Quiz.Website.QuizWebsiteApplication",
+            "projectName": "Quiz-Website",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-QuizWebsiteApplication<Quiz-Wbsite>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.Quiz.Website.Quiz.Website.QuizWebsiteApplication",
+            "projectName": "Quiz-Wbsite",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}

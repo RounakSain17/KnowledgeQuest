@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Admin Dashboard</title>
+    <!-- Include Bootstrap CSS from CDN -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Custom CSS for additional styling */
+        body {
+            padding: 20px;
+        }
+        h1 {
+            color: #007bff; /* Blue color */
+            text-align: center; /* Center align heading */
+            margin-top: 50px; /* Add space above heading */
+            margin-bottom: 30px; /* Add space below heading */
+        }
+        h3 {
+            margin-top: 20px; /* Add space above subheading */
+            margin-bottom: 20px; /* Add space below subheading */
+        }
+        .btn-primary {
+            display: block; /* Make button full width */
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>KnowledgeQuest</h1>
+        <h3 class="mt-5">Admin Dashboard</h3>
+        <a href="/admin/add-question" class="btn btn-primary mt-3">Add Question</a>
+    </div>
+</body>
+</html>
