@@ -10,7 +10,7 @@ Knowledge Quest is an interactive quiz website where users can take quizzes on P
 - Real-time quiz scoring
 - Admin panel to add questions to any category
 
-## Tech Stack
+## Technology Used
 
 - **Backend:** Spring Boot
 - **Frontend:** HTML, CSS, Bootstrap, JavaScript
